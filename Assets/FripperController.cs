@@ -65,7 +65,7 @@ public class FripperController : MonoBehaviour
         Vector2 vec1 = new Vector2(0f, 0f);
 
         //画面がタップされたとき
-        if (Input.touchCount == 1)
+        if (Input.touchCount > 0)
         {
             // タッチ情報の取得0
             Touch touch0 = Input.GetTouch(0);
@@ -109,92 +109,55 @@ public class FripperController : MonoBehaviour
                     SetAngle(this.defaultAngle);
                 }
             }
+
+
+            if (Input.touchCount > 1)
+            {
+
+                // タッチ情報の取得1
+                Touch touch1 = Input.GetTouch(1);
+
+                
+                //押した瞬間の処理1
+                if (touch1.phase == TouchPhase.Began)
+                {
+                    Debug.Log("押した瞬間2本");
+                    Vector2 pos1 = touch1.position;
+                    vec1 = pos1;
+
+                    // vecのX座標が0以上の場合タップで右フリッパー動く
+                    if (vec1.x >= 540 && tag == "RightFripperTag")
+                    {
+                        SetAngle(this.flickAngle);
+                    }
+
+                    // vecのX座標が0以下の場合タップで左フリッパー動く
+                    if (vec1.x <= 540 && tag == "LeftFripperTag")
+                    {
+                        SetAngle(this.flickAngle);
+                    }
+                }
+                //離した瞬間の処理1
+                if (touch1.phase == TouchPhase.Ended)
+                {
+                    Debug.Log("離した瞬間2本");
+                    Vector2 pos1 = touch1.position;
+                    vec1 = pos1;
+
+                    // vecのX座標が0以上の場合離すで右フリッパー戻る
+                    if (vec1.x >= 540 && tag == "RightFripperTag")
+                    {
+                        SetAngle(this.defaultAngle);
+                    }
+
+                    // vecのX座標が0以下の場合離すで左フリッパー戻る
+                    if (vec1.x <= 540 && tag == "LeftFripperTag")
+                    {
+                        SetAngle(this.defaultAngle);
+                    }
+                }
+            }
         }
-
-        if (Input.touchCount > 1)
-        {
-            // タッチ情報の取得0
-            Touch touch0 = Input.GetTouch(0);
-            // タッチ情報の取得1
-            Touch touch1 = Input.GetTouch(1);
-
-            //押した瞬間の処理0
-            if (touch0.phase == TouchPhase.Began)
-            {
-                Debug.Log("押した瞬間2本の1");
-                Vector2 pos0 = touch0.position;
-                vec0 = pos0;
-
-                // vecのX座標が0以上の場合タップで右フリッパー動く
-                if (vec0.x >= 540 && tag == "RightFripperTag")
-                {
-                    SetAngle(this.flickAngle);
-                }
-
-                // vecのX座標が0以下の場合タップで左フリッパー動く
-                if (vec0.x <= 540 && tag == "LeftFripperTag")
-                {
-                    SetAngle(this.flickAngle);
-                }
-            }
-            //離した瞬間の処理0
-            if (touch0.phase == TouchPhase.Ended)
-            {
-                Debug.Log("離した瞬間2本の1");
-                Vector2 pos0 = touch0.position;
-                vec0 = pos0;
-
-                // vecのX座標が0以上の場合離すで右フリッパー戻る
-                if (vec0.x >= 540 && tag == "RightFripperTag")
-                {
-                    SetAngle(this.defaultAngle);
-                }
-
-                // vecのX座標が0以下の場合離すで左フリッパー戻る
-                if (vec0.x <= 540 && tag == "LeftFripperTag")
-                {
-                    SetAngle(this.defaultAngle);
-                }
-            }
-            //押した瞬間の処理1
-            if (touch1.phase == TouchPhase.Began)
-            {
-                Debug.Log("押した瞬間2本の2");
-                Vector2 pos1 = touch1.position;
-                vec1 = pos1;
-
-                // vecのX座標が0以上の場合タップで右フリッパー動く
-                if (vec1.x >= 540 && tag == "RightFripperTag")
-                {
-                    SetAngle(this.flickAngle);
-                }
-
-                // vecのX座標が0以下の場合タップで左フリッパー動く
-                if (vec1.x <= 540 && tag == "LeftFripperTag")
-                {
-                    SetAngle(this.flickAngle);
-                }
-            }
-            //離した瞬間の処理1
-            if (touch1.phase == TouchPhase.Ended)
-            {
-                Debug.Log("離した瞬間2本の2");
-                Vector2 pos1 = touch0.position;
-                vec1 = pos1;
-
-                // vecのX座標が0以上の場合離すで右フリッパー戻る
-                if (vec1.x >= 540 && tag == "RightFripperTag")
-                {
-                    SetAngle(this.defaultAngle);
-                }
-
-                // vecのX座標が0以下の場合離すで左フリッパー戻る
-                if (vec1.x <= 540 && tag == "LeftFripperTag")
-                {
-                    SetAngle(this.defaultAngle);
-                }
-            }
-        }       
      }
 
     //フリッパーの傾きを設定
