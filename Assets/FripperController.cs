@@ -65,7 +65,7 @@ public class FripperController : MonoBehaviour
         Vector2 vec1 = new Vector2(0f, 0f);
 
         //画面がタップされたとき
-        if (Input.touchCount > 1)
+        if (Input.touchCount == 1)
         {
             // タッチ情報の取得0
             Touch touch0 = Input.GetTouch(0);
