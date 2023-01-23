@@ -29,7 +29,7 @@ public class BallController : MonoBehaviour
         this.tokutenText = GameObject.Find("TokutenText");
 
         //TokutenText‚Éscore‚ğ•\¦
-        this.tokutenText.GetComponent<Text>().text = score.ToString();
+        this.tokutenText.GetComponent<Text>().text = "SCORE:" + score.ToString();
     }
 
     // Update is called once per frame
@@ -43,7 +43,7 @@ public class BallController : MonoBehaviour
         }
 
         //TokutenText‚Éscore‚ğ•\¦
-        this.tokutenText.GetComponent<Text>().text = score.ToString();
+        this.tokutenText.GetComponent<Text>().text = "SCORE:" + score.ToString();
     }
 
     //Õ“Ë‚ÉŒÄ‚Î‚ê‚éŠÖ”
@@ -51,7 +51,7 @@ public class BallController : MonoBehaviour
     {
         if(other.gameObject.tag == "SmallStarTag")
         {
-            this.score += 10;;
+            this.score += 10;
         }
         else if (other.gameObject.tag == "LargeStarTag")
         {
